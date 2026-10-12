@@ -257,7 +257,7 @@ export function ProductionRequirementForm() {
 
           <PickerField
             label={<span className="text-slate-700">Design *</span>}
-            value={design ? (design.name || design.designNo) : undefined}
+            value={design ? design.designNo : undefined}
             hint={design ? `Design ${design.designNo}` : undefined}
             placeholder="Tap to choose design"
             onOpen={() => setDesignPickerOpen(true)}
@@ -321,7 +321,7 @@ export function ProductionRequirementForm() {
         title="Choose design"
         items={designs.filter(d => d.isActive).map((d): PickerItem => ({
           id: d._id,
-          title: d.name || d.designNo,
+          title: d.designNo,
           subtitle: [`Design ${d.designNo}`, d.colourOptions?.length ? `${d.colourOptions.length} colours` : '', d.sizeOptions?.length ? `${d.sizeOptions.length} sizes` : ''].filter(Boolean).join(' · '),
           keywords: d.designNo,
         }))}

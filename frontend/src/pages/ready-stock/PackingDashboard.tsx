@@ -127,8 +127,8 @@ export function PackingDashboard() {
             <div key={row.stockItemId} className="flex flex-col gap-3 p-4 bg-white border border-slate-200 rounded-xl shadow-sm">
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <div className="font-medium text-sm text-slate-900 break-words">{row.designName}</div>
-                  <div className="text-xs text-slate-400 font-mono">{row.designNo} · {categories[row.categoryId] ?? ''}</div>
+                  <div className="font-medium text-sm text-slate-900 break-words">{row.designNo}</div>
+                  <div className="text-xs text-slate-400">{categories[row.categoryId] ?? ''}</div>
                   <div className="text-xs text-slate-600 mt-0.5">{row.colourName} · Size {row.sizeName}</div>
                 </div>
                 <span className={`shrink-0 flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium transition-colors ${cfg.cls}`}>{cfg.icon} {label[row.packingStatus]}</span>
@@ -171,7 +171,7 @@ export function PackingDashboard() {
               const cfg = statusConfig[label[row.packingStatus]];
               return (
                 <tr key={row.stockItemId} className="border-b border-slate-100 last:border-0 hover:bg-slate-50">
-                  <td className="px-4 py-3"><div className="font-medium text-slate-900">{row.designName}</div><div className="text-xs text-slate-400 font-mono">{row.designNo}</div></td>
+                  <td className="px-4 py-3"><div className="font-medium text-slate-900">{row.designNo}</div></td>
                   <td className="px-4 py-3 text-slate-600">{categories[row.categoryId] ?? '—'}</td>
                   <td className="px-4 py-3 text-slate-700">{row.colourName}</td>
                   <td className="px-4 py-3"><span className="min-w-8 h-8 px-1 rounded-md bg-slate-100 text-slate-700 text-xs font-bold flex items-center justify-center">{row.sizeName}</span></td>

@@ -58,6 +58,7 @@ import { ProductionRequirementList } from '../../pages/production/requirements/P
 import { ProductionRequirementForm } from '../../pages/production/requirements/ProductionRequirementForm';
 import { JobSlipDetailSwitch } from '../../pages/production/job-slips/JobSlipDetailSwitch';
 import { JobSlipNew } from '../../pages/production/job-slips/JobSlipNew';
+import { JobSlipEditSwitch } from '../../pages/production/job-slips/JobSlipEdit';
 import { ReceivingList } from '../../pages/production/receiving/ReceivingList';
 import { ReceivingForm } from '../../pages/production/receiving/ReceivingForm';
 import { ReconciliationDetail } from '../../pages/production/reconciliation/ReconciliationDetail';
@@ -181,7 +182,7 @@ const router = createBrowserRouter([
           { path: 'job-slips/new', element: <JobSlipNew /> },
           { path: 'job-slips/new-from-design', element: <JobSlipForm /> },
           { path: 'job-slips/:id', element: <JobSlipDetailSwitch /> },
-          { path: 'job-slips/:id/edit', element: <JobSlipForm /> },
+          { path: 'job-slips/:id/edit', element: <JobSlipEditSwitch /> },
           { path: 'processing', element: <ProcessingJobList /> },
           { path: 'processing/new', element: <ProcessingJobForm /> },
           { path: 'processing/:id', element: <ProcessingJobForm /> },

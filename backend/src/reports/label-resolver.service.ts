@@ -139,7 +139,7 @@ export class LabelResolverService {
       case 'jobWorker':
         return this.simple('job_workers', list, (d) => d.name);
       case 'design':
-        return this.simple('designs', list, (d) => `${d.designNo} - ${d.name}`);
+        return this.simple('designs', list, (d) => d.designNo);
       case 'jobSlip':
         return this.simple('job_slips', list, (d) => d.docNo);
       case 'location':

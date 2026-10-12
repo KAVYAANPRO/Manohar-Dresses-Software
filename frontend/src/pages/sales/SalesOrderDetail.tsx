@@ -44,7 +44,7 @@ export function SalesOrderDetail() {
 
   const labelFor = (variantId: string) => {
     const it = items.find(i => i.designVariantId === variantId);
-    return it ? { title: `${it.designName}`, sub: variantText(it) } : { title: variantId, sub: '' };
+    return it ? { title: `${it.designNo ?? it.designName}`, sub: variantText(it) } : { title: variantId, sub: '' };
   };
 
   const confirm = async () => {

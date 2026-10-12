@@ -83,12 +83,12 @@ export class DesignsService extends MasterCrudService<Design> {
     try {
       created = await this.model.create({
         designNo: dto.designNo.trim(),
-        name: dto.name,
+        name: dto.name?.trim() || dto.designNo.trim(),
         productCategoryId: new Types.ObjectId(dto.productCategoryId as unknown as string),
         productType: dto.productType,
         description: dto.description,
-        colourOptions: dto.colourOptions.map((c) => new Types.ObjectId(c as unknown as string)),
-        sizeOptions: dto.sizeOptions.map((s) => new Types.ObjectId(s as unknown as string)),
+        colourOptions: (dto.colourOptions ?? []).map((c) => new Types.ObjectId(c as unknown as string)),
+        sizeOptions: (dto.sizeOptions ?? []).map((s) => new Types.ObjectId(s as unknown as string)),
         expectedProductionQty: dto.expectedProductionQty,
         manufacturingInstructions: dto.manufacturingInstructions,
         notes: dto.notes,
@@ -103,7 +103,7 @@ export class DesignsService extends MasterCrudService<Design> {
       throw err;
     }
 
-    await this.generateVariants(String(created._id), dto.colourOptions, dto.sizeOptions, actorId!);
+    await this.generateVariants(String(created._id), dto.colourOptions ?? [], dto.sizeOptions ?? [], actorId!);
 
     if (dto.defaultSellingRate !== undefined) {
       await this.setRate(String(created._id), dto.defaultSellingRate, actorId!);

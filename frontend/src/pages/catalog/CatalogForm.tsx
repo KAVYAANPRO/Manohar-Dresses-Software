@@ -100,7 +100,7 @@ export function CatalogForm() {
     setForm(f => ({
       ...f,
       designId,
-      designNameOrNumber: f.designNameOrNumber || (d ? `${d.designNo} — ${d.name}` : ''),
+      designNameOrNumber: f.designNameOrNumber || (d ? d.designNo : ''),
       hsnCode: f.hsnCode || d?.hsn || '',
       salesPrice: f.salesPrice || (d?.defaultSellingRate ? String(d.defaultSellingRate) : ''),
       defaultPrice: f.defaultPrice || (d?.defaultSellingRate ? String(d.defaultSellingRate) : ''),

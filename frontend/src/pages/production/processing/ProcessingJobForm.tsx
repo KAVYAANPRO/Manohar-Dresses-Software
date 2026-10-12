@@ -269,7 +269,7 @@ function ProcessingJobCreate() {
       <PickerSheet
         open={picker === 'design'}
         title="Choose design"
-        items={designs.map((d): PickerItem => ({ id: d._id, title: d.name || d.designNo, subtitle: `Design ${d.designNo}`, keywords: d.designNo }))}
+        items={designs.map((d): PickerItem => ({ id: d._id, title: d.designNo, keywords: d.designNo }))}
         selectedId={form.designId}
         searchPlaceholder="Search design no. or name…"
         onSelect={it => pick('designId', it.id)}
@@ -392,7 +392,7 @@ function ProcessingJobDetail({ id }: { id: string }) {
             <h1 className="text-xl md:text-2xl font-bold">{job.jobNumber}</h1>
             <span className="px-2 py-0.5 rounded-full text-xs font-medium transition-colors bg-[#FFDCE5] text-[#B80037]">{JOB_SLIP_STATUS_LABEL[job.status]}</span>
           </div>
-          <p className="text-sm text-slate-500 break-words">{job.processType} · {job.factoryName} · for {job.designNo} — {job.designName}</p>
+          <p className="text-sm text-slate-500 break-words">{job.processType} · {job.factoryName} · for {job.designNo}</p>
         </div>
       </div>
 

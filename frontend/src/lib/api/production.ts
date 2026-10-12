@@ -322,6 +322,11 @@ export interface JobSlipUpdate {
   agreedRate?: number;
   instructions?: string;
   remarks?: string;
+  challanNo?: string;
+  docDate?: string;
+  lotNo?: string;
+  /** '' clears the design (karigar's own). */
+  designId?: string;
 }
 
 export interface IssuePlanLine {

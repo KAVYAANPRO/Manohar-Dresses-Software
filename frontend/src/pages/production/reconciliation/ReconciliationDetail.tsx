@@ -95,7 +95,7 @@ export function ReconciliationDetail() {
             <h1 className="text-xl md:text-2xl font-bold text-slate-900">Reconciliation — {data.jobSlipNo}</h1>
             <span className={`px-2 py-1 rounded-full text-xs font-medium transition-colors ${data.status === 'CLOSED' ? 'bg-slate-100 text-slate-600' : 'bg-[#FFDCE5] text-[#B80037]'}`}>{JOB_SLIP_STATUS_LABEL[data.status]}</span>
           </div>
-          <p className="text-sm text-slate-500 break-words">{data.jobWorkerName} · {data.designNo} — {data.designName}{data.processingType ? ` · ${data.processingType}` : ''}</p>
+          <p className="text-sm text-slate-500 break-words">{data.jobWorkerName} · {data.designNo}{data.processingType ? ` · ${data.processingType}` : ''}</p>
         </div>
       </div>
 

@@ -252,7 +252,7 @@ export function VariantPicker({
   const pickerItems = useMemo<PickerItem[]>(() => list.map(i => ({
     id: i.designVariantId,
     title: `${i.designNo ?? '?'} · ${i.colourName ?? '?'} · ${i.sizeName ?? '?'}`,
-    subtitle: [i.designName, i.categoryName, `on hand ${i.onHand}`].filter(Boolean).join(' · '),
+    subtitle: [i.categoryName, `on hand ${i.onHand}`].filter(Boolean).join(' · '),
     meta: `ATP ${i.atp}`,
     keywords: `${i.hsn ?? ''}`,
   })), [list]);
@@ -263,7 +263,7 @@ export function VariantPicker({
       <PickerField
         className={compact ? 'min-w-[220px]' : ''}
         value={current ? `${current.designNo} · ${current.colourName} · ${current.sizeName}` : undefined}
-        hint={current ? `${current.designName ?? ''} · ATP ${current.atp}` : undefined}
+        hint={current ? `ATP ${current.atp}` : undefined}
         placeholder="Tap to choose design / colour / size"
         onOpen={() => setOpen(true)}
       />

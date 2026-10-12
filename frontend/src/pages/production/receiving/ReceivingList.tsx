@@ -50,7 +50,7 @@ export function ReceivingList() {
           jobSlip: r.jobSlipNo ?? '—',
           jobSlipId: r.jobSlipId,
           factory: r.jobWorkerName ?? '—',
-          design: [r.designNo, r.designName].filter(Boolean).join(' — '),
+          design: r.designNo ?? '—',
           expected: r.jobSlipExpectedTotal ?? r.totals.expected,
           received: r.totals.received,
           accepted: r.totals.accepted,

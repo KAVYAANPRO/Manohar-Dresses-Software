@@ -171,7 +171,7 @@ export function DesignForm() {
 
     const payload: DesignInput = {
       designNo: formData.designNo.trim(),
-      name: formData.name.trim(),
+      name: formData.designNo.trim(),
       productCategoryId: formData.productCategoryId,
       productType: formData.productType || undefined,
       description: formData.description || undefined,
@@ -194,7 +194,7 @@ export function DesignForm() {
         setSaveError('No internet. Your design is kept on this device as a draft — open New Design again when you are back online and tap Save (the BOM needs the design to be saved first).');
         return;
       }
-      const res = await submitOrQueue({ method: 'POST', url: '/designs', body: { ...payload, defaultSellingRate: rate }, label: `Design · ${payload.designNo} ${payload.name}`.trim() });
+      const res = await submitOrQueue({ method: 'POST', url: '/designs', body: { ...payload, defaultSellingRate: rate }, label: `Design · ${payload.designNo}` });
       if (res.queued) {
         draft.clear();
         setNotice("Saved on this device — it will be sent when you're back online.");
@@ -289,8 +289,7 @@ export function DesignForm() {
               <h3 className="font-semibold text-lg border-b border-[var(--color-border)] pb-2 mb-2">Design Information</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input label="Design No." name="designNo" value={formData.designNo} onChange={handleHeaderChange} placeholder="e.g. DR-1024" required disabled={isEditing} hint={isEditing ? 'Design number cannot change once saved.' : undefined} />
-                <Input label="Design Name" name="name" value={formData.name} onChange={handleHeaderChange} placeholder="e.g. Summer Floral Dress" required />
+                <Input label="Design Code" name="designNo" value={formData.designNo} onChange={handleHeaderChange} placeholder="e.g. DR-1024" required disabled={isEditing} hint={isEditing ? 'Design number cannot change once saved.' : undefined} />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

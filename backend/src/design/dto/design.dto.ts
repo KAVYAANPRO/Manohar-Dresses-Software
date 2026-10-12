@@ -1,5 +1,4 @@
 import {
-  ArrayNotEmpty,
   IsArray,
   IsMongoId,
   IsNumber,
@@ -11,13 +10,15 @@ import {
 
 export class CreateDesignDto {
   @IsString() @MinLength(1) designNo!: string;
-  @IsString() @MinLength(1) name!: string;
+  /** Optional: designs are known by their code; defaults to the design number. */
+  @IsOptional() @IsString() name?: string;
   @IsMongoId() productCategoryId!: string;
   @IsOptional() @IsString() productType?: string;
   @IsOptional() @IsString() description?: string;
 
-  @IsArray() @ArrayNotEmpty() @IsMongoId({ each: true }) colourOptions!: string[];
-  @IsArray() @ArrayNotEmpty() @IsMongoId({ each: true }) sizeOptions!: string[];
+  /** Optional at creation (colours are chosen later, e.g. when goods come back); variants are made per colour x size. */
+  @IsOptional() @IsArray() @IsMongoId({ each: true }) colourOptions?: string[];
+  @IsOptional() @IsArray() @IsMongoId({ each: true }) sizeOptions?: string[];
 
   @IsOptional() @IsNumber() @Min(0) expectedProductionQty?: number;
   @IsOptional() @IsString() manufacturingInstructions?: string;

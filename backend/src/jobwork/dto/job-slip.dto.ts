@@ -76,4 +76,9 @@ export class UpdateJobSlipDto {
   @IsOptional() @IsNumber() @Min(0) agreedRate?: number;
   @IsOptional() @IsString() instructions?: string;
   @IsOptional() @IsString() remarks?: string;
+  @IsOptional() @IsString() challanNo?: string;
+  @IsOptional() @IsDateString() docDate?: string;
+  @IsOptional() @IsString() @MinLength(1) lotNo?: string;
+  /** Design being made; empty string clears it ("karigar's own"). */
+  @IsOptional() @IsString() designId?: string;
 }

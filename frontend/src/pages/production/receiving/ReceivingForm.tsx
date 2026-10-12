@@ -104,7 +104,7 @@ function ReceivingView({ id }: { id: string }) {
             <h1 className="text-xl md:text-2xl font-bold text-slate-900">{rec.docNo}</h1>
             <span className={`px-2 py-1 rounded-full text-xs font-medium transition-colors ${rec.status === 'CONFIRMED' ? 'bg-green-100 text-green-800' : rec.status === 'DRAFT' ? 'bg-yellow-100 text-yellow-800' : 'bg-slate-100 text-slate-500'}`}>{rec.status}</span>
           </div>
-          <p className="text-sm text-slate-500 break-words">{fmtDate(rec.docDate)} · {rec.jobSlipNo} · {rec.jobWorkerName} · {[rec.designNo, rec.designName].filter(Boolean).join(' — ')}</p>
+          <p className="text-sm text-slate-500 break-words">{fmtDate(rec.docDate)} · {rec.jobSlipNo} · {rec.jobWorkerName} · {rec.designNo ?? ''}</p>
         </div>
       </div>
 
@@ -357,7 +357,7 @@ function ReceivingCreate() {
         {slip && summary && (
           <div className="bg-slate-50 rounded-lg px-4 py-3 text-sm flex flex-wrap gap-x-5 gap-y-1">
             <div><span className="text-slate-400">Factory:</span> <span className="font-medium">{summary.jobWorkerName}</span></div>
-            <div><span className="text-slate-400">Design:</span> <span className="font-medium">{summary.designNo} — {summary.designName}</span></div>
+            <div><span className="text-slate-400">Design:</span> <span className="font-medium">{summary.designNo}</span></div>
             <div><span className="text-slate-400">Expected:</span> <span className="font-semibold">{fmtQty(summary.production.expected)} pcs</span></div>
             <div><span className="text-slate-400">Received so far:</span> <span className="font-semibold">{fmtQty(summary.production.received)} pcs</span></div>
             <RestrictedValue perm="receiving.rate.view">

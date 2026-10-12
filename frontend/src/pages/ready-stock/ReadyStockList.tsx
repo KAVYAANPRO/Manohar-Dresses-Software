@@ -79,7 +79,7 @@ export function ReadyStockList() {
                 <button onClick={() => toggle(entry)} className="w-full text-left active:bg-slate-50 transition-colors px-4 md:px-5 py-4 flex items-start justify-between gap-3 flex-wrap border-b border-slate-100">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-bold text-slate-900">{entry.designName}</span>
+                      <span className="font-bold text-slate-900">{entry.designNo}</span>
                       <span className="font-mono text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded">{entry.designNo}</span>
                       <span className="text-xs text-slate-500">/ {entry.colourName}</span>
                       <ChevronDown size={14} className={`text-slate-400 transition-transform duration-200 ${open === k ? 'rotate-180' : ''}`} />

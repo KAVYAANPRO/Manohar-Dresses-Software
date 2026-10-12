@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Droplets, PackageCheck, Scissors, Send } from 'lucide-react';
+import { ArrowLeft, Droplets, PackageCheck, Scissors, Send, Pencil } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 import { Card } from '../../../components/ui/Card';
 import { Can } from '../../../lib/permissions/Can';
@@ -64,6 +64,13 @@ export function MaterialJobSlipDetail({ id }: { id: string }) {
           <h1 className="text-xl md:text-2xl font-bold truncate">Lot {slip.lotNo ?? slip.docNo}</h1>
           <p className="text-muted text-sm break-words">{slip.karigarName} · {slip.docNo} · {fmtDate(slip.docDate)}</p>
         </div>
+        <Can perm="jobslips.edit">
+          {!['RECEIVED', 'CLOSED', 'CANCELLED'].includes(slip.status) && (
+            <button onClick={() => navigate(`/production/job-slips/${slip.id}/edit`)} className="pressable shrink-0 ml-auto min-h-10 px-3 rounded-lg border border-[var(--color-border)] bg-white text-sm font-semibold flex items-center gap-1.5" aria-label="Edit job slip">
+              <Pencil size={16} /> Edit
+            </button>
+          )}
+        </Can>
       </div>
 
       {error && <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-4 py-3">{error}</p>}
@@ -76,7 +83,7 @@ export function MaterialJobSlipDetail({ id }: { id: string }) {
         {slip.agreedRate !== undefined && (
           <div><span className="text-xs text-muted block">Rate</span><span className="font-semibold">₹{fmt(slip.agreedRate)} {CHARGE_BASIS_LABEL[slip.chargeBasis]?.toLowerCase()}</span></div>
         )}
-        <div><span className="text-xs text-muted block">Design</span><span className="font-semibold">{slip.designId ? `${slip.designName ?? ''}${slip.designNo ? ` (${slip.designNo})` : ''}` : 'Karigar’s own'}</span></div>
+        <div><span className="text-xs text-muted block">Design</span><span className="font-semibold">{slip.designId ? (slip.designNo ?? '—') : 'Karigar’s own'}</span></div>
         {slip.instructions && <div className="col-span-2"><span className="text-xs text-muted block">Instructions</span><span>{slip.instructions}</span></div>}
       </Card>
 

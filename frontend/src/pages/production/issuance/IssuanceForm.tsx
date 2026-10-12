@@ -76,7 +76,7 @@ export function IssuanceForm() {
         setHeader({
           slipNumber: s.docNo,
           factoryName: worker?.name ?? '—',
-          designSku: design ? `${design.designNo} - ${design.name}` : '—',
+          designSku: design ? design.designNo : '—',
         });
         setItems(plan.lines.map(l => ({
           key: l.materialVariantId,

@@ -15,7 +15,7 @@ function DesignList({ rows, value, empty, onOpen }: { rows: DesignRow[]; value: 
       {rows.map((d, idx) => (
         <button key={d.designId} type="button" onClick={() => onOpen(d.designId)}
           className="text-left flex justify-between items-center gap-3 border-b border-[var(--color-border)] py-2 last:border-0">
-          <p className="text-sm font-medium min-w-0 break-words">{idx + 1}. {d.designNo} — {d.name}</p>
+          <p className="text-sm font-medium min-w-0 break-words">{idx + 1}. {d.designNo}</p>
           <p className="text-sm font-semibold shrink-0 whitespace-nowrap">{value(d)}</p>
         </button>
       ))}

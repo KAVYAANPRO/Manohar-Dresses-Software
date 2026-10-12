@@ -104,7 +104,7 @@ export function DesignDetail() {
         </button>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-3 flex-wrap">
-            <h1 className="text-xl md:text-2xl font-bold text-slate-900">{design.name}</h1>
+            <h1 className="text-xl md:text-2xl font-bold text-slate-900">Design {design.designNo}</h1>
             <span className="font-mono text-sm text-slate-500 bg-slate-100 px-2 py-0.5 rounded">{design.designNo}</span>
             <span className={`px-2 py-1 rounded-full text-xs font-medium transition-colors ${design.isActive ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600'}`}>{status}</span>
           </div>
@@ -162,7 +162,7 @@ export function DesignDetail() {
             )}
             {design.imageUrls?.length > 0 && (
               <div className="border-t border-slate-100 pt-3 flex gap-2 overflow-x-auto">
-                {design.imageUrls.map(u => <img key={u} src={u} alt={design.name} className="h-24 w-24 object-cover rounded-lg shrink-0" />)}
+                {design.imageUrls.map(u => <img key={u} src={u} alt={design.designNo} className="h-24 w-24 object-cover rounded-lg shrink-0" />)}
               </div>
             )}
           </div>

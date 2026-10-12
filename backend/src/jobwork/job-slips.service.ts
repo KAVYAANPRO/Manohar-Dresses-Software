@@ -169,6 +169,21 @@ export class JobSlipsService {
     if (dto.agreedRate !== undefined) slip.agreedRate = dto.agreedRate;
     if (dto.instructions !== undefined) slip.instructions = dto.instructions;
     if (dto.remarks !== undefined) slip.remarks = dto.remarks;
+    if (dto.challanNo !== undefined) slip.challanNo = dto.challanNo.trim() || undefined;
+    if (dto.docDate !== undefined) slip.docDate = new Date(dto.docDate);
+    if (dto.lotNo !== undefined && dto.lotNo.trim().toUpperCase() !== slip.lotNo) {
+      const lotNo = dto.lotNo.trim().toUpperCase();
+      const clash = await this.model.exists({
+        _id: { $ne: slip._id }, lotNo, jobType: slip.jobType, parentJobSlipId: { $exists: false }, status: { $ne: 'CANCELLED' },
+      });
+      if (clash) throw new ProblemException('DUPLICATE_NUMBER', 409, `Lot number ${lotNo} is already used on another job slip.`);
+      slip.lotNo = lotNo;
+    }
+    if (dto.designId !== undefined) {
+      if (!dto.designId) slip.designId = undefined;
+      else if (!Types.ObjectId.isValid(dto.designId)) throw new ProblemException('VALIDATION_FAILED', 422, 'Invalid design.');
+      else slip.designId = new Types.ObjectId(dto.designId);
+    }
     slip.updatedBy = actorId as any;
     slip.version += 1;
     await slip.save();

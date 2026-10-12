@@ -213,7 +213,7 @@ export function InvoiceDetail() {
                 <tr key={l._id} className="border-b border-slate-100 last:border-0 hover:bg-slate-50">
                   <td className="px-3 py-3 text-slate-500">{idx + 1}</td>
                   <td className="px-3 py-3">
-                    <div className="font-medium text-slate-900">{l.designName} / {l.colourName} / {l.sizeName}</div>
+                    <div className="font-medium text-slate-900">{l.designNo ?? l.designName} / {l.colourName} / {l.sizeName}</div>
                     <div className="text-xs text-slate-400 font-mono">{l.designNo}{l.categoryName ? ` · ${l.categoryName}` : ''}{l.returnedQty > 0 ? ` · ${l.returnedQty} returned` : ''}</div>
                   </td>
                   <td className="px-3 py-3 font-mono text-xs text-slate-600">{l.hsn}</td>
@@ -241,7 +241,7 @@ export function InvoiceDetail() {
             <div key={l._id} className="flex flex-col gap-3 p-3 border border-[var(--color-border)] rounded-lg bg-[var(--color-background)]">
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <div className="font-medium text-sm text-slate-900 break-words"><span className="text-slate-400 mr-1">{idx + 1}.</span>{l.designName} / {l.colourName} / {l.sizeName}</div>
+                  <div className="font-medium text-sm text-slate-900 break-words"><span className="text-slate-400 mr-1">{idx + 1}.</span>{l.designNo ?? l.designName} / {l.colourName} / {l.sizeName}</div>
                   <div className="text-xs text-slate-400 font-mono">{l.designNo} · HSN {l.hsn}{l.returnedQty > 0 ? ` · ${l.returnedQty} returned` : ''}</div>
                 </div>
                 <div className="text-right shrink-0"><div className="text-xs font-medium text-muted">Total</div><div className="text-sm font-semibold text-slate-900">{inr(l.lineTotal)}</div></div>

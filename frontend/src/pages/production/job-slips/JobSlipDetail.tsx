@@ -66,7 +66,7 @@ export function JobSlipDetail() {
   const stepIndex = STATUS_STEPS.indexOf(status as typeof STATUS_STEPS[number]);
   const isCancelled = slip.status === 'CANCELLED';
   const batchQty = slip.expectedOutputLines.reduce((t, l) => t + l.expectedQty, 0);
-  const designLabel = design ? `${design.designNo} — ${design.name}` : '—';
+  const designLabel = design ? design.designNo : '—';
   const unit = slip.chargeBasis === 'PER_PIECE' ? 'pc' : slip.chargeBasis === 'PER_METER' ? 'm' : 'job';
   const canIssue = ['CREATED', 'MATERIAL_ISSUED', 'IN_PROCESS', 'READY'].includes(slip.status);
   const canEdit = !['CLOSED', 'CANCELLED'].includes(slip.status);

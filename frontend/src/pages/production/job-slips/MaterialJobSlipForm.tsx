@@ -227,7 +227,7 @@ export function MaterialJobSlipForm({ embedded = false }: { embedded?: boolean }
 
   // ---- picker contents -----------------------------------------------------------------------
   const karigarItems: PickerItem[] = workers.map(w => ({ id: w._id, title: w.name, subtitle: [w.type === 'FACTORY' ? 'Factory' : 'Karigar', w.specialty, w.mobile].filter(Boolean).join(' · '), keywords: w.mobile }));
-  const designItems: PickerItem[] = designs.map(d => ({ id: d._id, title: d.name || d.designNo, subtitle: `Design ${d.designNo}${d.colourOptions?.length ? ` · ${d.colourOptions.length} colours` : ''}`, keywords: d.designNo }));
+  const designItems: PickerItem[] = designs.map(d => ({ id: d._id, title: d.designNo, subtitle: d.colourOptions?.length ? `${d.colourOptions.length} colours` : undefined, keywords: d.designNo }));
   const lotItems: PickerItem[] = lots.map(l => {
     const left = l.available - (usedByLot.get(l.lotId) ?? 0);
     return {
@@ -277,8 +277,7 @@ export function MaterialJobSlipForm({ embedded = false }: { embedded?: boolean }
             <PickerField label={<>Karigar <span className="text-red-500">*</span></>} value={karigar?.name} hint={karigar?.type === 'FACTORY' ? 'Factory' : undefined} placeholder="Tap to choose karigar" onOpen={() => setPicker({ kind: 'karigar' })} />
             <PickerField
               label={<>Design <span className="text-muted font-normal">(optional)</span></>}
-              value={design ? (design.name || design.designNo) : undefined}
-              hint={design ? `Design ${design.designNo}` : undefined}
+              value={design ? design.designNo : undefined}
               placeholder="Karigar’s own / tap to choose"
               onOpen={() => setPicker({ kind: 'design' })}
             />

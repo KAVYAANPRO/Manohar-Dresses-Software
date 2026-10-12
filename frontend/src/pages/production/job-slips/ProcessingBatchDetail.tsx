@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Droplets, PackageCheck } from 'lucide-react';
+import { ArrowLeft, Droplets, PackageCheck, Pencil } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 import { Card } from '../../../components/ui/Card';
 import { Can, RestrictedValue } from '../../../lib/permissions/Can';
@@ -84,6 +84,13 @@ export function ProcessingBatchDetail({ id }: { id: string }) {
           <h1 className="text-xl md:text-2xl font-bold truncate">{job.processName.charAt(0) + job.processName.slice(1).toLowerCase()} · Lot {job.lotNo ?? job.docNo}</h1>
           <p className="text-muted text-sm truncate">{job.processorName} · {job.docNo} · {fmtDate(job.docDate)}</p>
         </div>
+        <Can perm="jobslips.edit">
+          {!['RECEIVED', 'CLOSED', 'CANCELLED'].includes(job.status) && (
+            <button onClick={() => navigate(`/production/job-slips/${job.id}/edit`)} className="pressable shrink-0 ml-auto min-h-10 px-3 rounded-lg border border-[var(--color-border)] bg-white text-sm font-semibold flex items-center gap-1.5" aria-label="Edit job slip">
+              <Pencil size={16} /> Edit
+            </button>
+          )}
+        </Can>
       </div>
 
       {error && <p className="animate-fade-in text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-4 py-3">{error}</p>}

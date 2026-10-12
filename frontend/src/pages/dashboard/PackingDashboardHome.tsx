@@ -14,7 +14,7 @@ export function PackingDashboardHome() {
   // Group the per-variant rows by design for the "design-wise stock" list.
   const byDesign = new Map<string, { label: string; onHand: number; pending: number }>();
   for (const r of data?.designWiseStock ?? []) {
-    const e = byDesign.get(r.designNo) ?? { label: `${r.designNo} — ${r.designName}`, onHand: 0, pending: 0 };
+    const e = byDesign.get(r.designNo) ?? { label: r.designNo, onHand: 0, pending: 0 };
     e.onHand += r.onHand;
     e.pending += r.pendingQty;
     byDesign.set(r.designNo, e);

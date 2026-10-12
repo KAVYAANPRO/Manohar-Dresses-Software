@@ -55,13 +55,12 @@ export function DesignList() {
   );
 
   const columns = [
-    { header: 'Design No.', accessor: 'designNo' as keyof DesignRow },
     {
-      header: 'Design Name',
+      header: 'Design Code',
       accessor: (row: DesignRow) => (
         <div>
-          <div className="text-sm font-medium text-slate-900">{row.name}</div>
-          <div className="text-xs text-slate-500">{row.category} · {row.type}</div>
+          <div className="text-sm font-semibold text-slate-900">{row.designNo}</div>
+          <div className="text-xs text-slate-500">{row.category}{row.type ? ` · ${row.type}` : ''}</div>
         </div>
       ),
     },
