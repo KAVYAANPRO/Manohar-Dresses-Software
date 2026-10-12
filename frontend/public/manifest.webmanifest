@@ -1,0 +1,15 @@
+{
+  "name": "Manohar Dresses",
+  "short_name": "Manohar",
+  "description": "Garment manufacturing ERP: purchase, job work, stock and sales.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F8FAFC",
+  "theme_color": "#E40043",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
